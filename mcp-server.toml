@@ -1,0 +1,60 @@
+server_id = "mcp_package_registry"
+display_name = "Package Registry"
+version = "1.1.0"
+domain = "developer-tools"
+sdk_version = "0.1.0"
+risk_level = "low"
+writes_allowed = "none"
+transports = ["stdio"]
+credentials = []
+governance_gates = []
+environments = ["development", "staging", "production"]
+
+[[tools]]
+name = "lookup_package"
+description = "Look up a package — description, latest version, downloads, repository"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "list_versions"
+description = "List available versions of a package (most recent first)"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "get_changelog"
+description = "Get changelog or release notes for a package version"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "check_advisories"
+description = "Check for known security advisories for a package"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "check_compatibility"
+description = "Check if upgrading between two versions is compatible (semver analysis)"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "analyze_lockfile"
+description = "Analyze a lockfile — count packages, detect outdated"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "propose_upgrades"
+description = "Propose an upgrade plan for outdated dependencies"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []

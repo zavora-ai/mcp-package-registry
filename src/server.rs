@@ -1,3 +1,4 @@
+use adk_mcp_sdk::{HealthCheck, HealthStatus};
 use crate::client::RegistryClient;
 use rmcp::{handler::server::wrapper::Parameters, schemars, tool, tool_router};
 use serde::Deserialize;
@@ -130,5 +131,16 @@ impl PackageRegistryServer {
             }
         }
         serde_json::to_string_pretty(&json!({"path": i.path, "dependencies_checked": plan.len(), "plan": plan})).unwrap()
+    }
+}
+
+#[async_trait::async_trait]
+impl HealthCheck for PackageRegistryServer {
+    async fn check_health(&self) -> HealthStatus {
+        HealthStatus {
+            healthy: true,
+            message: Some("operational".into()),
+            latency_ms: Some(1),
+        }
     }
 }
