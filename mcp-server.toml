@@ -1,10 +1,10 @@
 server_id = "mcp_package_registry"
 display_name = "Package Registry"
-version = "1.1.0"
+version = "1.2.0"
 domain = "developer-tools"
-sdk_version = "0.1.0"
-risk_level = "low"
-writes_allowed = "none"
+sdk_version = "0.2.0"
+risk_level = "medium"
+writes_allowed = "gated"
 transports = ["stdio"]
 credentials = []
 governance_gates = []
@@ -12,49 +12,49 @@ environments = ["development", "staging", "production"]
 
 [[tools]]
 name = "lookup_package"
-description = "Look up a package — description, latest version, downloads, repository"
+description = "Look up a package — get description, latest version, downloads, repository. Works with crates.io and npm."
 risk_class = "read_only"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "list_versions"
-description = "List available versions of a package (most recent first)"
+description = "List available versions of a package (most recent first)."
 risk_class = "read_only"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "get_changelog"
-description = "Get changelog or release notes for a package version"
+description = "Get changelog or release notes for a package version."
 risk_class = "read_only"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
-name = "check_advisories"
-description = "Check for known security advisories for a package"
+name = "get_advisories"
+description = "Check for known security advisories for a package."
 risk_class = "read_only"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "check_compatibility"
-description = "Check if upgrading between two versions is compatible (semver analysis)"
+description = "Check if upgrading between two versions is compatible (semver analysis)."
 risk_class = "read_only"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
 name = "analyze_lockfile"
-description = "Analyze a lockfile — count packages, detect outdated"
+description = "Analyze a lockfile (Cargo.lock or package-lock.json) — count packages, detect outdated."
 risk_class = "read_only"
 requires_approval = false
 credential_bindings = []
 
 [[tools]]
-name = "propose_upgrades"
-description = "Propose an upgrade plan for outdated dependencies"
-risk_class = "read_only"
+name = "propose_upgrade_plan"
+description = "Propose an upgrade plan for outdated dependencies in a project."
+risk_class = "internal_write"
 requires_approval = false
 credential_bindings = []

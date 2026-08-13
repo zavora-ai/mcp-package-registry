@@ -37,7 +37,7 @@ pub struct PackageRegistryServer {
     pub client: Arc<RegistryClient>,
 }
 
-#[tool_router(server_handler)]
+#[tool_router]
 impl PackageRegistryServer {
     #[tool(description = "Look up a package — get description, latest version, downloads, repository. Works with crates.io and npm.")]
     async fn lookup_package(&self, Parameters(i): Parameters<LookupPackageInput>) -> String {
@@ -143,4 +143,11 @@ impl HealthCheck for PackageRegistryServer {
             latency_ms: Some(1),
         }
     }
+}
+
+adk_mcp_sdk::mcp_2026_server! {
+    server: PackageRegistryServer,
+    task_tools: ["analyze_lockfile"],
+    approval_tools: [],
+    cache_ttl_ms: 60_000,
 }
