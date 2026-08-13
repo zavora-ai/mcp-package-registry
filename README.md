@@ -109,7 +109,7 @@ Ask your agent:
 ```toml
 server_id = "mcp_package_registry"
 display_name = "Package Registry MCP"
-version = "1.0.0"
+version = "1.2.0"
 domain = "developer"
 risk_level = "low"
 writes_allowed = "none"
